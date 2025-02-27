@@ -16,15 +16,23 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTableModule } from '@angular/material/table';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { ProfileListComponent } from './components/profile-list/profile-list.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    ProfileComponent,
+    ProfileListComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -44,6 +52,7 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
     ReactiveFormsModule,
     MatAutocompleteModule,
     NgxMaskDirective,
+    MatTableModule,
   ],
   providers: [provideNgxMask()],
   bootstrap: [AppComponent],

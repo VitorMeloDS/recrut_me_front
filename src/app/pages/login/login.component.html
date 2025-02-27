@@ -13,8 +13,7 @@
           <mat-error *ngIf="loginForm.get('cpf')?.hasError('required')">
             CPF é obrigatório
           </mat-error>
-          <mat-error
-            *ngIf="!loginForm.get('cpf')?.hasError('required') && loginForm.get('cpf')?.hasError('cpfInvalido')">
+          <mat-error *ngIf="loginForm.get('cpf')?.hasError('cpfInvalido')">
             CPF inválido
           </mat-error>
         </mat-form-field>
