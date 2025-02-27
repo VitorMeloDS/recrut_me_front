@@ -1,0 +1,49 @@
+<section class="login-component">
+  <mat-card class="login">
+    <div class="form-container">
+      <mat-card-header>
+        <mat-card-title>Crendências</mat-card-title>
+      </mat-card-header>
+      <form [formGroup]="loginForm" class="form-login">
+
+        <!-- CPF -->
+        <mat-form-field appearance="outline">
+          <mat-label>CPF</mat-label>
+          <input matInput formControlName="cpf" type="text" mask="000.000.000-00" placeholder="Digite seu CPF">
+          <mat-error *ngIf="loginForm.get('cpf')?.hasError('required')">
+            CPF é obrigatório
+          </mat-error>
+          <mat-error
+            *ngIf="!loginForm.get('cpf')?.hasError('required') && loginForm.get('cpf')?.hasError('cpfInvalido')">
+            CPF inválido
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Senha -->
+        <mat-form-field appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input matInput formControlName="password" type="password" placeholder="Digite sua Senha">
+          <mat-error *ngIf="loginForm.get('password')?.hasError('required')" class="error">
+            Senha é obrigatória
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')" class="error">
+            A senha deve ter no mínimo 8 caracteres
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password')?.hasError('pattern')" class="error">
+            A senha deve conter pelo menos 1 letra maiúscula, 1 minúscula, 1 número e 1 caractere especial.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-card-actions>
+          <button [disabled]="loginForm.invalid" mat-flat-button color="primary" (click)="login()">
+            ENTRAR
+          </button>
+        </mat-card-actions>
+      </form>
+    </div>
+
+    <div class="image-container">
+      <img src="/assets/imgs/logo-dark.svg" alt="Logo da aplicação RecrutMe">
+    </div>
+  </mat-card>
+</section>

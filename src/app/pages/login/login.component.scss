@@ -1,0 +1,126 @@
+$primary-color: #4a90e2; // Azul moderno
+$secondary-color: #6c5ce7; // Roxo elegante
+$background-color: #f4f7fa; // Fundo claro
+$text-color: #333; // Texto escuro
+$card-bg: #ffffff; // Fundo dos cards
+$border-radius: 8px;
+
+.login-component {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $background-color;
+  border-radius: $border-radius;
+
+  .login {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: $card-bg;
+    gap: 24px;
+    padding: 80px;
+    border-radius: $border-radius;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+
+    img {
+      max-width: 80%;
+    }
+  }
+
+  .form-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    color: $text-color;
+
+    mat-card-header {
+      margin-bottom: 16px;
+      justify-content: center;
+      align-items: center;
+
+      mat-card-title {
+        font-size: 28px;
+        font-weight: 600;
+        color: $primary-color;
+        margin-bottom: 16px;
+      }
+    }
+
+    mat-card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    mat-card-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: normal;
+      margin-top: 16px;
+
+      button {
+        border-radius: $border-radius;
+        background: $primary-color;
+        margin-top: 16px;
+        color: white;
+        font-weight: 600;
+        transition: background 0.3s ease-in-out;
+
+        &:hover {
+          background: darken($primary-color, 10%);
+        }
+
+        &:disabled {
+          background: lighten($primary-color, 20%);
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    mat-form-field {
+      width: 100%;
+
+      .error {
+        overflow: hidden;
+      }
+    }
+
+    a {
+      cursor: pointer;
+      color: $secondary-color;
+      font-weight: 500;
+      text-decoration: none;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: darken($secondary-color, 10%);
+      }
+
+      &:active {
+        color: #551a8b;
+      }
+    }
+  }
+}
