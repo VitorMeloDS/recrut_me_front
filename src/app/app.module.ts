@@ -26,6 +26,9 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ProfileListComponent } from './components/profile-list/profile-list.component';
 
+import { ToastrModule } from 'ngx-toastr';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +56,9 @@ import { ProfileListComponent } from './components/profile-list/profile-list.com
     MatAutocompleteModule,
     NgxMaskDirective,
     MatTableModule,
+    MatSnackBarModule,
+
+    ToastrModule.forRoot(),
   ],
   providers: [provideNgxMask()],
   bootstrap: [AppComponent],

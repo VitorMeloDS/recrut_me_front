@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '@core/service/auth.service';
+import { Auth } from '@shared/interfaces/auth.interface';
 import { cpf } from 'cpf-cnpj-validator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +14,12 @@ import { cpf } from 'cpf-cnpj-validator';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private matSnackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -31,8 +39,23 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.loginForm.valid) {
-      const { cpf, password } = this.loginForm.value;
-      console.log({ cpf, password });
+      const body: Auth = this.loginForm.value;
+
+      this.authService.login(body).subscribe({
+        next: (value) => {
+          localStorage.setItem('token', value?.token);
+          localStorage.setItem('refreshToken', value?.refreshToken);
+          this.router.navigateByUrl('/perfil');
+        },
+
+        error: (err) => {
+          this.matSnackBar.open(err.error.message, 'Erro', {
+            horizontalPosition: 'right',
+            verticalPosition: 'top',
+            direction: 'rtl',
+          });
+        },
+      });
     }
   }
 
