@@ -1,16 +1,15 @@
 <mat-card class="profile-table">
-  <mat-card-title>Lista de Perfis</mat-card-title>
-
-  <table mat-table [dataSource]="profiles" class="mat-elevation-z8">
+  <mat-card-title class="title">Lista de Perfis</mat-card-title>
+  <table mat-table [dataSource]="profiles" class="mat-elevation-z8 table-margin" *ngIf="profiles.length > 0">
     <!-- Coluna Nome -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Nome </th>
       <td mat-cell *matCellDef="let profile"> {{ profile.name }} </td>
     </ng-container>
 
-    <!-- Coluna Ações -->
-    <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef> Ações </th>
+    <!-- Coluna Editar -->
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Editar </th>
       <td mat-cell *matCellDef="let profile">
         <button mat-icon-button color="primary" (click)="editProfile(profile)">
           <mat-icon>edit</mat-icon>
@@ -18,7 +17,23 @@
       </td>
     </ng-container>
 
+    <!-- Coluna Excluir -->
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Deletar </th>
+      <td mat-cell *matCellDef="let profile">
+        <button mat-icon-button color="primary" (click)="deleteProfile(profile)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
+  <!-- Mensagem caso não tenha perfis -->
+  <div *ngIf="profiles.length === 0" class="empty-message">
+    <p>Nenhum perfil encontrado.</p>
+  </div>
+
 </mat-card>

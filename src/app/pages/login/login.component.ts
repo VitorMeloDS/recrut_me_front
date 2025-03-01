@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
 
         error: (err) => {
           this.matSnackBar.open(err.error.message, 'Erro', {
+            duration: 3000,
             horizontalPosition: 'right',
             verticalPosition: 'top',
             direction: 'rtl',

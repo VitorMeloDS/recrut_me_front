@@ -1,0 +1,36 @@
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .menus {
+    margin: 40px 0;
+
+    .checkbox {
+      color: #4a90e2;
+
+      &::selection {
+        background-color: #4a90e2;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .button-profile {
+    background-color: #4a90e2;
+    color: #fafafa;
+
+    &:hover {
+      background-color: #f4f4f4;
+      color: #4a90e2;
+    }
+  }
+}

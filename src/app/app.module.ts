@@ -17,8 +17,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTableModule } from '@angular/material/table';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 
@@ -28,6 +31,9 @@ import { ProfileListComponent } from './components/profile-list/profile-list.com
 
 import { ToastrModule } from 'ngx-toastr';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { HomeComponent } from './pages/home/home.component';
+import { AuthInterceptor } from '@core/interceptors/base.interceptor';
+import { ProfileFormComponent } from './components/profile-form/profile-form.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +41,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LoginComponent,
     ProfileComponent,
     ProfileListComponent,
+    ProfileFormComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,10 +65,21 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     NgxMaskDirective,
     MatTableModule,
     MatSnackBarModule,
-
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    HttpClientModule,
+    MatCheckboxModule,
     ToastrModule.forRoot(),
   ],
-  providers: [provideNgxMask()],
+  providers: [
+    provideNgxMask(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

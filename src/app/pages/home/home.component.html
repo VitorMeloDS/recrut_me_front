@@ -1,0 +1,45 @@
+<mat-sidenav-container class="container">
+  <!-- Sidebar -->
+  <mat-sidenav mode="side" opened class="sidebar">
+    <div class="sidebar-logo">
+      <img src="../../../assets/imgs/logo-dark.svg" alt="Logo RecrutMe">
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/painel" routerLinkActive="active-link">
+        <span matListItemIcon class="material-icons">
+          people
+        </span>
+        Colaboradores
+      </a>
+      <a mat-list-item routerLink="/perfil" routerLinkActive="active-link">
+        <span matListItemIcon class="material-icons">
+          person_add
+        </span>
+        Convite
+      </a>
+      <a mat-list-item routerLink="/perfil" routerLinkActive="active-link">
+        <span matListItemIcon class="material-icons">
+          person
+        </span>
+        Perfil
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- Conteúdo Principal -->
+  <mat-sidenav-content class="content">
+    <!-- Header -->
+    <mat-toolbar class="header">
+      <span class="spacer"></span>
+      <button mat-button>Vitor Melo</button>
+    </mat-toolbar>
+
+    <!-- Área dinâmica onde os módulos serão carregados -->
+    <div class="dynamic-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,20 @@
+section {
+  .container-add-button {
+    display: flex;
+    margin-bottom: 20px;
+
+    .spacer {
+      flex: 1;
+    }
+
+    .button-add {
+      background-color: #4a90e2;
+      color: #fafafa;
+
+      &:hover {
+        background-color: #f4f4f4;
+        color: #4a90e2;
+      }
+    }
+  }
+}
