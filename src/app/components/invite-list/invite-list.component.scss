@@ -1,0 +1,31 @@
+.invite-container {
+  padding: 20px;
+}
+
+.invite-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.status-open {
+  color: orange;
+  font-weight: bold;
+}
+
+.status-expired {
+  color: red;
+  font-weight: bold;
+}
+
+.status-completed {
+  color: green;
+  font-weight: bold;
+}
+
+.empty-message {
+  text-align: center;
+  color: gray;
+  font-size: 16px;
+  margin-top: 20px;
+}

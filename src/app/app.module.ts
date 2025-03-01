@@ -22,7 +22,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
 
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
@@ -34,6 +34,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HomeComponent } from './pages/home/home.component';
 import { AuthInterceptor } from '@core/interceptors/base.interceptor';
 import { ProfileFormComponent } from './components/profile-form/profile-form.component';
+import { InviteListComponent } from './components/invite-list/invite-list.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { ProfileFormComponent } from './components/profile-form/profile-form.com
     ProfileListComponent,
     ProfileFormComponent,
     HomeComponent,
+    InviteListComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +72,7 @@ import { ProfileFormComponent } from './components/profile-form/profile-form.com
     MatListModule,
     HttpClientModule,
     MatCheckboxModule,
+    FormsModule,
     ToastrModule.forRoot(),
   ],
   providers: [
